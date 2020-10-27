@@ -15,7 +15,8 @@
     "react-dom": "^16.13.1",
     "react-google-autocomplete": "^1.2.6",
     "react-google-places-autocomplete": "^3.0.0",
-    "react-scripts": "^3.4.4"
+    "react-scripts": "^3.4.4",
+    "react-spinners": "^0.9.0"
   },
   "scripts": {
     "start": "react-scripts start",
