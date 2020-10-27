@@ -38,6 +38,8 @@ const Results = ({ data }) => {
                         staffRating={Math.round(item.staffRating / item.count * 10) / 10}
                         adheranceRating={Math.round(item.adheranceRating / item.count * 10) / 10}
                         extraData={item.extraData} />
+
+
                 </div>
             </div>
 

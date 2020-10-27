@@ -1,19 +1,14 @@
-
-
 .Comment {
-    padding: 5px;
     width: auto;
-    background-color: powderblue;
-    display: grid;
-    /* border: 1px solid lightsteelblue; */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.10);
     padding: 20px;
+    margin-top: 10px;
+    background-color: powderblue;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.10);
+    display: grid;
     grid-column-start: 1;
     grid-column-end: 3;
     justify-items: center;
     position: relative;
-    align-content: center;
-    margin-top: 10px;
     animation: mymove 0.5s;
     animation-iteration-count: 1;
 }
@@ -21,6 +16,16 @@
 .Comment span {
     display: flex;
     align-items: center;
+}
+
+@keyframes mymove {
+    from {
+        left: -200px;
+    }
+
+    to {
+        left: 0px;
+    }
 }
 
 .extraData {
@@ -31,37 +36,8 @@
     margin-top: 10px;
 }
 
-.extraData2 {
-    display: grid;
-    grid-column-start: 3;
-    grid-column-end: 5;
-}
-
-@keyframes mymove {
-    from {left: -200px;}
-    to {left: 0px;}
-
-    /* 0% {
-        transform: translateX(-10%);
-    }
-
-    100% {
-        transform: translateX(0%);
-    } */
-
-}
-
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 800px) {
     .Comment {
         padding: 0;
-        /* font-size: small; */
-    }
-
-    .extraData {
-        grid-column-start: 3;
     }
 }
-
-
-
-
