@@ -15,22 +15,13 @@ const App = () => {
     })
   }, [])
 
-  // Handling input
-
-
-
-
-
   return (
     <div className="App">
-      <Input
-
-      />
+      <Input />
 
       <Results
         data={data}
       />
-
 
     </div>
   );
