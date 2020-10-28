@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import './Results.css';
 import Comment from '../Comment/Comment';
 import StarRateIcon from '@material-ui/icons/StarRate';
+import { MoonLoader } from 'react-spinners';
+import { CircularProgress } from '@material-ui/core';
 
-
-
-const Results = ({ data }) => {
+const Results = ({ data, loading }) => {
 
     const [filterInput, setFilterInput] = useState('')
-
 
     console.log(data.filter(item => item.place.startsWith(filterInput.toUpperCase())));
 
@@ -59,7 +58,6 @@ const Results = ({ data }) => {
                 </input>
             </div>
 
-
             <div className='Header'>
                 <span>Place</span>
                 <span>Rating</span>
@@ -67,10 +65,9 @@ const Results = ({ data }) => {
                 <span></span>
             </div>
 
-            {results}
+            {loading ? <CircularProgress style={{ display: 'block', margin: 'auto', padding: '50px' }} /> : null}
 
-            {/* onChange render the filter list??? */}
-
+            { results}
 
         </div >
     )
