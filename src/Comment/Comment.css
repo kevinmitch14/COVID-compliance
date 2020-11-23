@@ -2,15 +2,25 @@
     width: auto;
     padding: 20px;
     margin-top: 10px;
-    background-color: powderblue;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.10);
+    /* background-color: powderblue; */
+    color: white;
+    background-color: #2e285a;
     display: grid;
+    border-radius: 5%;
     grid-column-start: 1;
     grid-column-end: 3;
     justify-items: center;
     position: relative;
     animation: mymove 0.5s;
     animation-iteration-count: 1;
+}
+
+.extraData {
+    display: grid;
+    justify-items: center;
+    grid-column-start: 3;
+    padding: 20px;
+    margin-top: 10px;
 }
 
 .Comment span {
@@ -28,16 +38,17 @@
     }
 }
 
-.extraData {
-    display: grid;
-    justify-items: center;
-    grid-column-start: 3;
-    padding: 20px;
-    margin-top: 10px;
-}
 
 @media only screen and (max-width: 800px) {
     .Comment {
         padding: 0;
+    }
+
+    .extraData {
+        grid-column-start: 2;
+    }
+
+    .Comment {
+        grid-column-end: 2;
     }
 }

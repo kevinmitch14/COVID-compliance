@@ -9,34 +9,63 @@
     height: 50px;
     width: 250px;
     text-align: center;
+    border-radius: 5px;
+    border: 1px solid black;
+
+}
+
+label.MuiRating-label {
+    color: white;
+}
+
+.MuiFilledInput-input {
+    padding: 0px !important;
+    background-color: white !important;
+
+}
+
+.MuiFormControl-root {
+    background-color: #457b9d !important;
 }
 
 .Ratings {
     margin-top: 10px;
+    color: #2e285a;
+    color: black;
+    font-size: large;
 }
+
 
 .Input input:focus::placeholder {
     color: transparent;
 }
 
 .Container {
-    background-color: aliceblue;
+    /* background-color: #2e285a; */
+    /* background-color: #5f2bfd; */
+    background-color: #457b9d;
     margin: auto;
     width: 60%;
     margin-top: 50px;
     padding: 40px;
     padding-bottom: 20px;
     position: relative;
+    border: 2px solid #2e285a;
+    border-bottom: none;
+    box-sizing: border-box;
 }
 
 .TextArea {
-    background-color: aliceblue;
+    background-color: #457b9d;
     margin: auto;
     width: 60%;
-    padding: 40px;
-    padding-bottom: 20px;
+    padding: 10px 40px 20px;
     position: relative;
-    border-top: 1px solid lightsteelblue;
+    box-sizing: border-box;
+    border-right: 2px solid #2e285a;
+    border-left: 2px solid #2e285a;
+    border-bottom: 2px solid #2e285a;
+
 }
 
 .TextArea textarea {
@@ -44,6 +73,10 @@
     display: block;
     width: 70%;
     height: 200px;
+}
+
+textarea::placeholder {
+    font-size: large;
 }
 
 p {
@@ -66,14 +99,16 @@ p {
     align-items: center;
     display: flex;
 }
+
 .child p {
     margin: 0;
     padding: 0;
     color: cornflowerblue;
     text-decoration: underline;
     font-weight: 500;
-    
+
 }
+
 .child p:hover {
     color: blue;
 }
@@ -85,15 +120,18 @@ p {
     justify-content: center;
     margin: 0;
     padding: 0;
-    color: cornflowerblue;
-    text-decoration: underline;
-    font-weight: 500;
+    /* font-weight: bold; */
+    font-size: large;
     padding-bottom: 5px;
 }
 
 .test p {
     margin-right: 0;
+    text-decoration: underline;
+    color: black;
 }
+
+
 
 
 
@@ -107,6 +145,7 @@ p {
         padding-top: 20px;
         margin-top: 0px;
         padding-bottom: 20px;
+        border: none;
     }
 
     .Input {
@@ -114,12 +153,12 @@ p {
     }
 
     .Input input {
-        width: 90%;
+        width: 80%;
         height: 50px;
     }
 
     .Input .secondary {
-        width: 40%;
+        width: 80%;
         margin-top: 20px;
     }
 
@@ -139,9 +178,8 @@ p {
 
     .TextArea textarea {
         height: 200px;
-        
+
     }
 
-    
-}
 
+}

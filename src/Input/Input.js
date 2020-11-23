@@ -3,15 +3,15 @@ import './Input.css';
 import Button from '@material-ui/core/Button';
 import Rating from '@material-ui/lab/Rating';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import moment from 'moment';
 import Autocomplete from 'react-google-autocomplete';
 import db from '../firebase';
 import firebase from 'firebase'
 
 
+
 const Input = (props) => {
 
-    const [dateValidation, setDateValidation] = useState(true)
+    // const [dateValidation, setDateValidation] = useState(true)
     const [place, setPlace] = useState('');
 
     const [adheranceRating, setAdheranceRating] = useState(0);
@@ -96,15 +96,15 @@ const Input = (props) => {
 
                     <Autocomplete
                         apiKey={'AIzaSyBhcUiOcSbio-KNInHy-n3sUoCFtjMyL1c'}
-                        style={{}}
                         placeholder={"Enter location"}
                         onPlaceSelected={(place) => {
-                            console.log(place.place_id);
                             const id = place.place_id
                             const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                            // const proxyurl = "";
                             const url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + id + "&key=AIzaSyBhcUiOcSbio-KNInHy-n3sUoCFtjMyL1c"; // site that doesn’t send Access-Control-*
                             fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                                 .then(response => response.json())
+                                // .then(response => console.log(response))
                                 .then(contents => contents.result)
                                 .then((result) => setPlace(result))
                                 .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
@@ -113,15 +113,29 @@ const Input = (props) => {
                         componentRestrictions={{ country: "irl" }}
                     />
 
-                    <input className="secondary" type="date"
-                        // onChange={props.onDateChange}
+                    {/* <input className="secondary" type="date"
+                        id="l" placeholder="dd/mm/yyyy"
                         onChange={(event) => setDate(event.target.value)}
                         onBlur={() => {
                             // moment(props.date).isAfter(moment().format("MMM Do YY")) &&
                             moment(date).isValid() ? setDateValidation(true) : setDateValidation(false)
                         }}
                     >
-                    </input>
+                    </input> */}
+
+
+                    {/* <TextField
+                        id="date"
+                        type="date"
+                        // defaultValue="dd/mm/yyyy"
+                        defaultValue={moment().format('L')}
+                        variant="filled"
+                        style={{
+                            backgroundColor: 'white',
+                            padding: '0',
+                        }}
+                    /> */}
+
                 </div>
 
                 <div className='Ratings'>
@@ -133,7 +147,7 @@ const Input = (props) => {
                     /></p>
 
                     <p>Adherance<Rating
-                        style={{ padding: '10px' }}
+                        style={{ padding: '10px', fill: 'red' }}
                         name="simple-controlled3"
                         value={Number(adheranceRating)}
                         onChange={(event) => setAdheranceRating(event.target.value)}
@@ -157,11 +171,10 @@ const Input = (props) => {
                     <p onClick={() => setMenu(!extraMenu)}>Additional Comments</p>
                     <ArrowDropDownIcon
                         fontSize="large"
-                        color="primary"
                         onClick={() => setMenu(!extraMenu)} />
 
                     <Button
-                        style={{ width: '20%', margin: 'auto', position: 'relative' }}
+                        style={{ width: '20%', margin: 'auto', position: 'relative', backgroundColor: '#2e285a', textDecoration: 'none' }}
                         className="jim"
                         variant="contained"
                         color="primary"
@@ -175,7 +188,7 @@ const Input = (props) => {
 
                 </div>
 
-                {dateValidation ? null : <p style={{ color: 'red' }}>Invalid date.</p>}
+                {/* {dateValidation ? null : <p style={{ color: '#ff4d4d', fontWeight: 'bold', fontSize: 'large' }}>Please enter a valid date.</p>} */}
 
             </div>
 
@@ -184,6 +197,7 @@ const Input = (props) => {
 
                     <div className="TextArea">
                         <textarea
+                            placeholder="Enter Comment here..."
                             onChange={(event) => setInput(event.target.value)}></textarea>
                     </div>
                     : null

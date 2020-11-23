@@ -1,6 +1,6 @@
 .Results {
     margin: auto;
-    background-color: aliceblue;
+    background-color: white;
     width: 60%;
     /* height: 50px; */
     height: fit-content;
@@ -8,23 +8,26 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.10);
     padding: 20px 40px 20px 40px;
     display: grid;
-    align-items: center;
-
+    box-sizing: border-box;
+    border: 1px solid black;
 }
-
 
 .ResultsInner {
     display: grid;
     grid-template-columns: 40% 25% 25% 10%;
     justify-items: center;
+    align-items: center;
 }
 
 .filterArea {
     width: 60%;
     margin: auto;
-    padding: 20px 40px 20px 40px;
-    background-color: aliceblue;
+    background-color: #457b9d;
     text-align: center;
+    box-sizing: border-box;
+    border: 2px solid #2e285a;
+    border-top: 0;
+    padding-bottom: 10px;
 
 }
 
@@ -37,8 +40,6 @@
     color: transparent;
 }
 
-
-
 .Header {
     margin: auto;
     width: 60%;
@@ -46,11 +47,12 @@
     grid-template-columns: 40% 25% 25% 10%;
     padding: 20px 40px 20px 40px;
     justify-items: center;
-    border: 1px solid lightsteelblue;
     border-left: none;
     border-right: none;
-    background-color: powderblue;
-
+    font-weight: bold;
+    color: azure;
+    background-color: #2e285a;
+    box-sizing: border-box;
 }
 
 
@@ -62,11 +64,7 @@
         width: 100%;
         font-size: small;
         padding-left: 0;
-        padding-right: 5px;
-    }
-
-    .filterArea {
-        width: 100%;
+        padding-right: 0;
     }
 
     .Header {
@@ -74,13 +72,26 @@
         font-size: small;
         padding-left: 0;
         padding-right: 0;
+        grid-template-columns: 55% 20% 20% 5%;
+        border-radius: 0;
     }
 
     .ResultsInner {
-        justify-content: space-around;
+        /* justify-content: space-around; */
+        grid-template-columns: 55% 20% 20% 5%;
+        font-size: smaller;
+        margin-right: 5px;
+
+    }
+
+    .ResultsInner svg {
+        height: 18px;
+
     }
 
     .filterArea {
+        width: 100%;
+        border: none;
         padding-left: 0;
         padding-right: 0;
         text-align: center;
