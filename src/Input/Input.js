@@ -65,7 +65,7 @@ const Input = (props) => {
 
 
 
-        if (place !== "" && date !== "" && cleanRating !== 0 && adheranceRating !== 0 && staffRating !== 0) {
+        if (place !== "" && cleanRating !== 0 && adheranceRating !== 0 && staffRating !== 0) {
 
             db.collection('reviews').add({
                 place: place.name.toUpperCase(),
@@ -98,6 +98,7 @@ const Input = (props) => {
                         apiKey={'AIzaSyBhcUiOcSbio-KNInHy-n3sUoCFtjMyL1c'}
                         placeholder={"Enter location"}
                         onPlaceSelected={(place) => {
+                            console.log(place)
                             const id = place.place_id
                             const proxyurl = "https://cors-anywhere.herokuapp.com/";
                             // const proxyurl = "";
@@ -112,6 +113,7 @@ const Input = (props) => {
                         types={['establishment']}
                         componentRestrictions={{ country: "irl" }}
                     />
+
 
                     {/* <input className="secondary" type="date"
                         id="l" placeholder="dd/mm/yyyy"
