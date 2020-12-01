@@ -13,7 +13,6 @@ const App = () => {
     // This fires when app loads
     db.collection('reviews').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       setData(snapshot.docs.map(doc => doc.data()))
-      console.log(loading)
       setloading(false)
     })
 

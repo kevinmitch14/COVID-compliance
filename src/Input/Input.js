@@ -11,7 +11,6 @@ import firebase from 'firebase'
 
 const Input = (props) => {
 
-    // const [dateValidation, setDateValidation] = useState(true)
     const [place, setPlace] = useState('');
 
     const [adheranceRating, setAdheranceRating] = useState(0);
@@ -47,7 +46,6 @@ const Input = (props) => {
             // Logic to add to document
             snap.forEach(doc => {
                 console.log(doc.id)
-                console.log(doc.data().userComment);
                 db.collection('reviews').doc(doc.id).update({
                     count: parseInt(doc.data().count + 1),
                     cleanRating: (parseInt(doc.data().cleanRating) + parseInt(cleanRating)),
@@ -104,7 +102,6 @@ const Input = (props) => {
                             const url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + id + "&key=AIzaSyBhcUiOcSbio-KNInHy-n3sUoCFtjMyL1c"; // site that doesn’t send Access-Control-*
                             fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
                                 .then(response => response.json())
-                                // .then(response => console.log(response))
                                 .then(contents => contents.result)
                                 .then((result) => setPlace(result))
                                 .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
