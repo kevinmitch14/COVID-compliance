@@ -1,13 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import StarRateIcon from '@material-ui/icons/StarRate';
 import './Comment.css'
 
 const Comment = ({ comment, cleanRating, staffRating, adheranceRating, extraData }) => {
 
+    // const [showComment, setShowComment] = useState(false)
+    const [width, setWidth] = useState(window.innerWidth)
     const [showComment, setShowComment] = useState(false)
+    console.log(width)
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth)
+        window.addEventListener("resize", handleResize);
+        console.log("Running")
+        if (width < 500) {
+            setShowComment(true)
+        }
+        if (width > 500) {
+            setShowComment(false)
+        }
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        };
+    }, [width])
 
     return (
         <>
+
             <button onClick={() => setShowComment(!showComment)}>i</button>
             {showComment ?
                 [
@@ -38,8 +57,6 @@ const Comment = ({ comment, cleanRating, staffRating, adheranceRating, extraData
                                 )
                             } return null;
                         })}
-
-                        {/* {extraData.opening_hours ? extraData.opening_hours.open_now ? <span style={{ color: 'green' }}>Open</span> : <span style={{ color: 'red' }}>Closed</span> : null} */}
 
                         <a href={"tel:" + extraData.formatted_phone_number}><span>{extraData.formatted_phone_number}</span></a>
                         {extraData.website ? <a href={extraData.website} target="_blank" rel="noopener noreferrer">{extraData.website.length < 30 ? <span>{extraData.website}</span> : <span>Website</span>}</a> : null}

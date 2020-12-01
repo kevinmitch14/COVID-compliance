@@ -55,11 +55,10 @@ const Input = (props) => {
                     staffRating: parseInt(doc.data().staffRating) + parseInt(staffRating),
                     accumRating: Math.round(parseInt(doc.data().cleanRating) + parseInt(doc.data().staffRating) + parseInt(doc.data().adheranceRating) + (
                         parseInt(cleanRating) + parseInt(staffRating) + parseInt(adheranceRating))),
-                    userComment: doc.data().userComment.concat(userComment)
-
+                    userComment: doc.data().userComment.concat(userComment),
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 })
             })
-
             return;
         }
 

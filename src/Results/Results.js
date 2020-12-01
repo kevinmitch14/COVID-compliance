@@ -61,7 +61,7 @@ const Results = ({ data, loading }) => {
                     <span style={{ display: 'flex', alignItems: 'center' }}>{Math.round(((item.accumRating / item.count) / 3) * 10) / 10}<StarRateIcon /></span>
 
                     <span>{item.count}</span>
-
+                    {console.log(window.innerWidth)}
                     <Comment
                         cleanRating={Math.round(item.cleanRating / item.count * 10) / 10}
                         staffRating={Math.round(item.staffRating / item.count * 10) / 10}
