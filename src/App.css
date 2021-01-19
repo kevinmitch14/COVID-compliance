@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', 'arial';
+}
+
+.Input {
+  background-color: #EBE8E8;
+  padding: 2em 4em;
+  color: #707070;
+  border-bottom: 1px solid #636262;
+}
+
+.Input input {
+  padding: 0.5em;
+  margin-right: 2em;
+  width: 40%;
+}
+
+.Input button {
+  background-color: #F2C991;
+  padding: .5em;
+  border: 1px solid #707070;
+}
+
+.search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.search input {
+  padding: 1em;
+}
+
+.left {
+  padding-right: 4em;
+  border-right: 0.1px solid #707070;
+  line-height: 1.8em;
+  padding-left: 2em;
+}
+
+.right {
+  padding-left: 4em;
+}
+
+.right p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.spotlight-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2em 4em 0em;
+}
+
+.spotlight-info .place-rating,
+.spotlight-info .place-ranking {
+  font-weight: bold;
+  color: black;
+  font-size: 14px;
+}
+
+.spotlight-info .place-name {
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid #e9b873;
+}
+
+@media (max-width: 1000px) {
+  .Input {
+    padding: 2em 1em;
+  }
+  .spotlight-info {
+    padding: 2em 2em 0em;
+  }
+  .spotlight-info .left {
+    padding-left: 0;
+    padding-right: 1em;
+  }
+  .spotlight-info .right {
+    padding-left: 1em;
+  }
+}
+
+@media (max-width: 500px) {
+  .Input {
+    padding: 2em 1em 2em;
+    font-size: 14px;
+  }
+  .spotlight-info {
+    padding: 1em 0em 1em;
+  }
+}
+
+.container {
+  display: block;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2em 1em;
+}
+
+.result-card {
+  border: 1px solid #707070;
+  padding: 1em;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #f3f2f2;
+  margin-bottom: 2em;
+  border-radius: .3em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 6fr 2fr 1fr;
+      grid-template-columns: 6fr 2fr 1fr;
+  -webkit-column-gap: 1em;
+          column-gap: 1em;
+  color: #000000;
+}
+
+.result-card .name {
+  text-align: left;
+  padding-left: 1em;
+}
+
+.result-card .name #card-name {
+  font-weight: bold;
+  color: #966117;
+}
+
+.result-card .name #card-county {
+  font-size: 0.8em;
+}
+
+.result-card .info button {
+  background-color: #F2C991;
+  padding: 0.3em 0.6em;
+  border: 1px solid #707070;
+}
+
+.result-card .rating {
+  position: relative;
+}
+
+.result-card .rating #first {
+  font-size: 1.5em;
+}
+
+.result-card .rating #last {
+  position: absolute;
+  font-size: 0.8em;
+  bottom: 0;
+}
+
+.result-card .reviews {
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .container {
+    padding: 3em 4em;
+  }
+  .result-card {
+    margin-bottom: 3em;
+    padding: 2em 1em;
+  }
+  .result-card #card-name {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 700px) {
+  .result-card {
+    -ms-grid-columns: 6fr 2fr 2fr 1fr;
+        grid-template-columns: 6fr 2fr 2fr 1fr;
+  }
+  .result-card .reviews {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width: 800px) {
+  .container {
+    padding: 3em 6em;
+  }
+  .result-card {
+    padding: 2em 2em;
+  }
+  .result-card #card-name {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .container {
+    padding: 3em 8em;
+  }
+  .result-card {
+    padding: 2.5em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .result-card {
+    padding: 2em 3em;
+  }
+}
+
+#comment-button {
+  background-color: #F2C991;
+  padding: 0.3em 0.3em;
+  margin: .5em;
+  border: 1px solid #707070;
+}
+
+.comment-container {
+  border-top: 1px solid #a5a4a4af;
+  margin-bottom: -1em;
+  margin-top: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 5;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-animation: mymove 1.5s;
+          animation: mymove 1.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+@-webkit-keyframes mymove {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mymove {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.comment-container .comment-ratings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  letter-spacing: .05em;
+}
+
+.comment-container .comment-extra {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .comment-container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    grid-column-end: 4;
+  }
+  .comment-container .comment-ratings {
+    display: none;
+  }
+}
+/*# sourceMappingURL=App.css.map */

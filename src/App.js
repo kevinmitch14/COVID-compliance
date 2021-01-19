@@ -7,26 +7,22 @@ import db from './firebase';
 const App = () => {
 
   const [data, setData] = useState([]);
-  const [loading, setloading] = useState(true)
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
-    // This fires when app loads
-    db.collection('reviews').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+    db.collection('reviews').orderBy('average', 'desc').onSnapshot(snapshot => {
       setData(snapshot.docs.map(doc => doc.data()))
       setloading(false)
     })
-
   }, [loading])
 
   return (
     <div className="App" >
       <Input />
-
       <Results
         data={data}
         loading={loading}
       />
-
     </div>
   );
 }

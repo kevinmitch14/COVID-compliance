@@ -1,92 +1,70 @@
-import React, { useState } from 'react';
-import './Results.css';
-import Comment from '../Comment/Comment';
-import StarRateIcon from '@material-ui/icons/StarRate';
+import React from 'react';
+// import './Results.css'
 import { CircularProgress } from '@material-ui/core';
+import Comment from '../Comment/Comment'
 
 const Results = ({ data, loading }) => {
 
-    const [filterInput, setFilterInput] = useState('')
-    const [countyInput, setCountyInput] = useState('')
+    // const [filterInput, setFilterInput] = useState('')
+    // const [countyInput, setCountyInput] = useState('')
 
-    const counties = ['Antrim', 'Armagh', 'Carlow', 'Cavan', 'Clare', 'Cork', 'Donegal', 'Down', 'Dublin',
-        'Fermanagh', 'Galway', 'Kerry', 'Kildare', 'Kilkenny', 'Laois', 'Leitrim', 'Limerick', 'Longford', 'Louth', 'Mayo', 'Meath',
-        'Monaghan', 'Offaly', 'Roscommon', 'Sligo', 'Tipperary', 'Tyrone', 'Waterford', 'Westmeath', 'Wexford', 'Wicklow']
+    // const counties = ['Antrim', 'Armagh', 'Carlow', 'Cavan', 'Clare', 'Cork', 'Donegal', 'Down', 'Dublin',
+    //     'Fermanagh', 'Galway', 'Kerry', 'Kildare', 'Kilkenny', 'Laois', 'Leitrim', 'Limerick', 'Longford', 'Louth', 'Mayo', 'Meath',
+    //     'Monaghan', 'Offaly', 'Roscommon', 'Sligo', 'Tipperary', 'Tyrone', 'Waterford', 'Westmeath', 'Wexford', 'Wicklow']
 
-    const dropDown =
-        <select name="counties" onChange={(event) => setCountyInput(event.target.value)} style={{ height: '54px', marginLeft: '10%', borderRadius: '5px', border: '1px solid black' }}>
-            <option value="">All Counties</option>
-            {counties.map((item) => {
-                return (
-                    <option value={item} key={item}>
-                        {item}
-                    </option>
-                )
-            })}
+    // const dropDown =
+    //     <select name="counties" onChange={(event) => setCountyInput(event.target.value)} style={{ height: '54px', marginLeft: '10%', borderRadius: '5px', border: '1px solid black' }}>
+    //         <option value="">All Counties</option>
+    //         {counties.map((item) => {
+    //             return (
+    //                 <option value={item} key={item}>
+    //                     {item}
+    //                 </option>
+    //             )
+    //         })}
 
-        </select>
+    //     </select>
 
-    const j = []
+    // const j = []
 
-    data.map((item) => (
-        item.extraData.address_components.map((item2) => {
-            if (item2.types.includes("administrative_area_level_1")) {
-                let countyName = item2.long_name.split(" ")[1]
-                if (countyName === countyInput) {
-                    j.push(item)
-                }
-            }
-        })
-    ))
-
-    let x = null
-    countyInput === "" ? x = data : x = j
+    // console.log(j)
+    // let x = null
+    // countyInput === "" ? x = data : x = j
 
 
-    const results = x.filter(item => item.place.startsWith(filterInput.toUpperCase())).map((item, index) => {
+    // const results = x.filter(item => item.place.startsWith(filterInput.toUpperCase())).map((item, index) => {
+    const results = data.map((item, index) => {
         return (
-            < div className='Results' key={item.extraData.reference} >
-                <div className='ResultsInner' key={index}>
-                    {item.place.length > 10 ? <span style={{ fontSize: "small" }}>{item.place}</span> : <span>{item.place}</span>}
+            <div className='result-card' key={index}>
 
-                    <span style={{ display: 'flex', alignItems: 'center' }}>{Math.round(((item.accumRating / item.count) / 3) * 10) / 10}<StarRateIcon /></span>
-
-                    <span>{item.count}</span>
-                    <Comment
-                        cleanRating={Math.round(item.cleanRating / item.count * 10) / 10}
-                        staffRating={Math.round(item.staffRating / item.count * 10) / 10}
-                        adheranceRating={Math.round(item.adheranceRating / item.count * 10) / 10}
-                        extraData={item.extraData}
-                    />
-
+                <div className="name">
+                    <p id="card-name">{item.place}</p>
+                    <p id="card-county">County {item.county}</p>
                 </div>
-            </div >
+
+                <div className="rating">
+                    <span id="first">{(Math.floor(Math.round(((item.accumRating / 3) / item.count) * 10) / 10))}.</span><span id="last">{Math.round(((Math.round(((item.accumRating / 3) / item.count) * 10) / 10) - Math.floor(Math.round(((item.accumRating / 3) / item.count) * 10) / 10).toFixed()) * 10)}</span>
+                </div>
+
+                <div className="reviews">
+                    {item.count > 1 ? <span>{item.count} reviews</span> : <span>{item.count} review</span>}
+                </div>
+
+                <Comment
+                    cleanRating={Math.round(item.cleanRating / item.count * 10) / 10}
+                    staffRating={Math.round(item.staffRating / item.count * 10) / 10}
+                    adheranceRating={Math.round(item.adheranceRating / item.count * 10) / 10}
+                    extraData={item.extraData}
+                />
+            </div>
         )
     })
 
     return (
-        <div>
-            <div className='filterArea'>
-                <input id="filter"
-                    value={filterInput}
-                    type="text"
-                    style={{ height: '50px', padding: '0', borderRadius: '5px', border: '1px solid black' }}
-                    placeholder="Search"
-                    onChange={event => setFilterInput(event.target.value)}>
-                </input>
-                {dropDown}
-            </div>
-
-            <div className='Header'>
-                <span>Place</span>
-                <span>Rating</span>
-                <span>Reviews</span>
-                <span></span>
-            </div>
-
+        <div className="container">
             {loading ? <CircularProgress style={{ display: 'block', margin: 'auto', padding: '50px' }} /> :
-                x.length < 1 ?
-                    <p style={{ padding: '50px', fontSize: 'large' }}>No entries yet in {countyInput}!</p>
+                data.length < 1 ?
+                    <p style={{ padding: '50px', fontSize: 'large' }}>No entries yet!</p>
                     : results}
         </div >
     )
