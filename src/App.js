@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Input from './Input/Input';
-import Results from './Results/Results';
+import Input from './components/Input';
+import Results from './components/Results';
 import './App.css';
 import db from './firebase';
 

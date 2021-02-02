@@ -1,38 +1,10 @@
 import React from 'react';
 // import './Results.css'
 import { CircularProgress } from '@material-ui/core';
-import Comment from '../Comment/Comment'
+import Comment from '../components/Comment'
 
 const Results = ({ data, loading }) => {
 
-    // const [filterInput, setFilterInput] = useState('')
-    // const [countyInput, setCountyInput] = useState('')
-
-    // const counties = ['Antrim', 'Armagh', 'Carlow', 'Cavan', 'Clare', 'Cork', 'Donegal', 'Down', 'Dublin',
-    //     'Fermanagh', 'Galway', 'Kerry', 'Kildare', 'Kilkenny', 'Laois', 'Leitrim', 'Limerick', 'Longford', 'Louth', 'Mayo', 'Meath',
-    //     'Monaghan', 'Offaly', 'Roscommon', 'Sligo', 'Tipperary', 'Tyrone', 'Waterford', 'Westmeath', 'Wexford', 'Wicklow']
-
-    // const dropDown =
-    //     <select name="counties" onChange={(event) => setCountyInput(event.target.value)} style={{ height: '54px', marginLeft: '10%', borderRadius: '5px', border: '1px solid black' }}>
-    //         <option value="">All Counties</option>
-    //         {counties.map((item) => {
-    //             return (
-    //                 <option value={item} key={item}>
-    //                     {item}
-    //                 </option>
-    //             )
-    //         })}
-
-    //     </select>
-
-    // const j = []
-
-    // console.log(j)
-    // let x = null
-    // countyInput === "" ? x = data : x = j
-
-
-    // const results = x.filter(item => item.place.startsWith(filterInput.toUpperCase())).map((item, index) => {
     const results = data.map((item, index) => {
         return (
             <div className='result-card' key={index}>
