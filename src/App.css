@@ -24,7 +24,7 @@
   border: 1px solid #707070;
 }
 
-.search {
+.Input .search {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,7 +35,7 @@
           justify-content: center;
 }
 
-.search input {
+.Input .search input {
   padding: 1em;
 }
 
@@ -233,7 +233,7 @@
 #comment-button {
   background-color: #F2C991;
   padding: 0.3em 0.3em;
-  margin: .5em;
+  margin: .5em 1em;
   border: 1px solid #707070;
 }
 
@@ -304,5 +304,10 @@
   .comment-container .comment-ratings {
     display: none;
   }
+}
+
+#empty-message {
+  padding: '50px';
+  font-size: 'large';
 }
 /*# sourceMappingURL=App.css.map */

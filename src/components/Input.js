@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Rating from '@material-ui/lab/Rating';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Autocomplete from 'react-google-autocomplete';
 import db from '../firebase';
 import firebase from 'firebase/app'
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 const Input = (props) => {
 
