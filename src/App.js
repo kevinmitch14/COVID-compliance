@@ -1,5 +1,3 @@
-// Development Branch
-
 import React, { useState, useEffect } from 'react';
 import Input from './components/Input';
 import Results from './components/Results';
