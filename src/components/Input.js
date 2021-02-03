@@ -5,27 +5,26 @@ import Autocomplete from 'react-google-autocomplete';
 import db from '../firebase';
 import firebase from 'firebase/app'
 
-const Input = (props) => {
+const Input = ({ placeData }) => {
 
     const [place, setPlace] = useState('');
+    console.log(place)
     const [county, setCounty] = useState('');
     const [rating, setRating] = useState('')
     const [rank, setRank] = useState('')
 
 
-
     useEffect(() => {
-        db.collection("reviews").orderBy('average', 'desc')
-            .get()
-            .then((snapshot) => {
-                snapshot.docs.forEach((doc, index) => {
-                    if (place && place.name.toUpperCase() === doc.data().place) {
-                        setRating(doc.data().average)
-                        setRank(index)
-                    }
-                });
-            });
-    }, [place])
+        placeData.forEach((item, index) => {
+            if (place && place.name.toUpperCase() === item.place) {
+                setRating(item.average)
+                setRank(index)
+            } else {
+                setRank('')
+                setRating('')
+            }
+        })
+    }, [place, placeData])
 
     const [adheranceRating, setAdheranceRating] = useState(0);
     const [cleanRating, setCleanRating] = useState(0);
@@ -131,21 +130,24 @@ const Input = (props) => {
                     <div className="left">
                         <h4 className="place-name">{place.name}</h4>
                         {rating ? <p>Rating:  <span className="place-rating">{(Math.round(((rating)) * 10) / 10)}</span></p> : <p>Rating: <span className="place-rating">N/A</span></p>}
-                        <p>Ranking:  <span className="place-ranking">#{rank + 1}</span></p>
+                        {typeof rank === 'number' ? <p>Ranking:  <span className="place-ranking">#{rank + 1}</span></p> : <p>Ranking:  <span className="place-ranking">N/A</span></p>}
                     </div>
 
                     <div className="right">
                         <p>Cleanliness: <span><Rating
+                            name="clean"
                             value={Number(cleanRating)}
                             onChange={(event) => setCleanRating(event.target.value)}
                             icon={<FiberManualRecordIcon />} /></span></p>
 
                         <p>Adherance: <span><Rating
+                            name="adherance"
                             value={Number(adheranceRating)}
                             onChange={(event) => setAdheranceRating(event.target.value)}
                             icon={<FiberManualRecordIcon />} /></span></p>
 
                         <p>Staff: <span><Rating
+                            name="staff"
                             value={Number(staffRating)}
                             onChange={(event) => setStaffRating(event.target.value)}
                             icon={<FiberManualRecordIcon />} /></span></p>
