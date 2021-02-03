@@ -1,23 +1,12 @@
-import { CircularProgress } from '@material-ui/core';
-import { useEffect, useState } from 'react';
 import Comment from '../components/Comment'
-import db from '../firebase'
+import { CircularProgress } from '@material-ui/core';
 
-const Results = () => {
-    const [data, setData] = useState([]);
-    const [loading, setloading] = useState(true);
-
-    useEffect(() => {
-        db.collection('reviews').orderBy('average', 'desc').onSnapshot(snapshot => {
-            setData(snapshot.docs.map(doc => doc.data()))
-            setloading(false)
-        })
-    }, [loading])
+const Results = ({ placeData, loading }) => {
 
     const SVGstyle = { display: 'block', margin: 'auto', padding: '50px' }
 
 
-    const resultsList = data.map((item, index) => {
+    const resultsList = placeData.map((item, index) => {
         return (
             <div className='result-card' key={index}>
 
@@ -46,10 +35,8 @@ const Results = () => {
 
     return (
         <div className="container">
-            {loading ? <CircularProgress style={SVGstyle} /> :
-                data.length < 1 ?
-                    <p id="empty-message">No entries yet!</p>
-                    : resultsList}
+            {loading && <CircularProgress style={SVGstyle} />}
+            {placeData ? resultsList : <p id="empty-message">No entries yet!</p>}
         </div >
     )
 }
