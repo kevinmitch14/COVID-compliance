@@ -99,8 +99,8 @@ const Input = ({ placeData }) => {
                     onPlaceSelected={(place) => {
                         console.log(place)
                         const id = place.place_id
-                        const proxyurl = "https://cors-anywhere.herokuapp.com/";
-                        // const proxyurl = "https://young-basin-20621.herokuapp.com/";
+                        // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                        const proxyurl = "https://young-basin-20621.herokuapp.com/";
                         const url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + id + "&key=AIzaSyBhcUiOcSbio-KNInHy-n3sUoCFtjMyL1c"; // site that doesn’t send Access-Control-*
                         fetch(proxyurl + url)
                             .then(response => response.json())
