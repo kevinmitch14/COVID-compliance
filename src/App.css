@@ -6,7 +6,7 @@
 }
 
 .Input {
-  background-color: #EBE8E8;
+  background-color: #3d405b;
   padding: 2em 4em;
   color: #707070;
   border-bottom: 1px solid #636262;
@@ -19,7 +19,7 @@
 }
 
 .Input button {
-  background-color: #F2C991;
+  background-color: #fcc374;
   padding: .5em;
   border: 1px solid #707070;
 }
@@ -54,9 +54,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .spotlight-info {
@@ -67,17 +64,17 @@
       -ms-flex-pack: center;
           justify-content: center;
   padding: 2em 4em 0em;
+  color: #ffffff;
 }
 
 .spotlight-info .place-rating,
 .spotlight-info .place-ranking {
   font-weight: bold;
-  color: black;
+  color: #cacaca;
   font-size: 14px;
 }
 
 .spotlight-info .place-name {
-  color: black;
   font-weight: bold;
   border-bottom: 2px solid #e9b873;
 }
@@ -114,6 +111,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   padding: 2em 1em;
+  background-color: #e5e5e5;
 }
 
 .result-card {
@@ -125,7 +123,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #f3f2f2;
+  background-color: #ffffff;
   margin-bottom: 2em;
   border-radius: .3em;
   -webkit-box-align: center;
@@ -155,7 +153,7 @@
 }
 
 .result-card .info button {
-  background-color: #F2C991;
+  background-color: #fcc374;
   padding: 0.3em 0.6em;
   border: 1px solid #707070;
 }
@@ -231,7 +229,7 @@
 }
 
 #comment-button {
-  background-color: #F2C991;
+  background-color: #fcc374;
   padding: 0.3em 0.3em;
   margin: .5em 1em;
   border: 1px solid #707070;
@@ -309,5 +307,9 @@
 #empty-message {
   padding: '50px';
   font-size: 'large';
+}
+
+.MuiRating-iconEmpty {
+  color: #9da8bd9e !important;
 }
 /*# sourceMappingURL=App.css.map */
