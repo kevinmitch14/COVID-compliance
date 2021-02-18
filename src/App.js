@@ -16,6 +16,23 @@ const App = () => {
   }, [loading])
 
 
+  useEffect(() => {
+    const proxyurl = "https://young-basin-20621.herokuapp.com/";
+    const url = "https://pokeapi.co/api/v2/pokemon/ditto"
+
+    const interval = setInterval(() => {
+      console.log('This will run every 30 mins!');
+      fetch(proxyurl + url)
+        .then(res => res.json())
+        .then(r => console.log(r))
+    }, 1800000);
+    return () => clearInterval(interval);
+  }, []);
+
+
+
+
+
   return (
     <div className="App">
       <Input placeData={placeData} loading={loading} />

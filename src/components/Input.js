@@ -4,24 +4,23 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Autocomplete from 'react-google-autocomplete';
 import db from '../firebase';
 import firebase from 'firebase/app'
+//Dev
 
 const Input = ({ placeData }) => {
 
     const [place, setPlace] = useState('');
-    console.log(place)
     const [county, setCounty] = useState('');
     const [rating, setRating] = useState('')
     const [rank, setRank] = useState('')
 
 
     useEffect(() => {
+        setRank('')
+        setRating('')
         placeData.forEach((item, index) => {
             if (place && place.name.toUpperCase() === item.place) {
-                setRating(item.average)
-                setRank(index)
-            } else {
-                setRank('')
-                setRating('')
+                setRating(parseInt(item.average))
+                setRank(parseInt(index))
             }
         })
     }, [place, placeData])
@@ -128,6 +127,7 @@ const Input = ({ placeData }) => {
                 <div className="spotlight-info">
 
                     <div className="left">
+                        {console.log(100)}
                         <h4 className="place-name">{place.name}</h4>
                         {rating ? <p>Rating:  <span className="place-rating">{(Math.round(((rating)) * 10) / 10)}</span></p> : <p>Rating: <span className="place-rating">N/A</span></p>}
                         {typeof rank === 'number' ? <p>Ranking:  <span className="place-ranking">#{rank + 1}</span></p> : <p>Ranking:  <span className="place-ranking">N/A</span></p>}
