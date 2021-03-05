@@ -18,15 +18,12 @@ const App = () => {
 
   useEffect(() => {
     const proxyurl = "https://young-basin-20621.herokuapp.com/";
-    const url = "https://pokeapi.co/api/v2/pokemon/ditto"
+    const url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJefl6pGoJZ0gR8J7k13w4xzk&key=AIzaSyBhcUiOcSbio-KNInHy-n3sUoCFtjMyL1c";
 
-    const interval = setInterval(() => {
-      console.log('This will run every 30 mins!');
-      fetch(proxyurl + url)
-        .then(res => res.json())
-        .then(r => console.log(r))
-    }, 1800000);
-    return () => clearInterval(interval);
+    const fetchData = async () => {
+      await fetch(proxyurl + url)
+    }
+    fetchData()
   }, []);
 
 

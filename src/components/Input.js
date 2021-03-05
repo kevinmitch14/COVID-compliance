@@ -19,7 +19,7 @@ const Input = ({ placeData }) => {
         setRating('')
         placeData.forEach((item, index) => {
             if (place && place.name.toUpperCase() === item.place) {
-                setRating(parseInt(item.average))
+                setRating((item.average.toFixed(1)))
                 setRank(parseInt(index))
             }
         })
@@ -129,7 +129,10 @@ const Input = ({ placeData }) => {
                     <div className="left">
                         {console.log(100)}
                         <h4 className="place-name">{place.name}</h4>
-                        {rating ? <p>Rating:  <span className="place-rating">{(Math.round(((rating)) * 10) / 10)}</span></p> : <p>Rating: <span className="place-rating">N/A</span></p>}
+                        {rating ? <p>Rating:  <span className="place-rating">
+                            {/* {(Math.round(((rating)) * 10) / 10)} */}
+                            {rating}
+                        </span></p> : <p>Rating: <span className="place-rating">N/A</span></p>}
                         {typeof rank === 'number' ? <p>Ranking:  <span className="place-ranking">#{rank + 1}</span></p> : <p>Ranking:  <span className="place-ranking">N/A</span></p>}
                     </div>
 
