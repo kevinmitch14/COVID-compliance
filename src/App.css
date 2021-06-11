@@ -142,11 +142,12 @@ body {
 
 .result-card .name #card-name {
   font-weight: bold;
-  color: #966117;
+  color: #012227;
 }
 
 .result-card .name #card-county {
   font-size: 0.8em;
+  color: #134e56;
 }
 
 .result-card .info button {
@@ -161,16 +162,19 @@ body {
 
 .result-card .rating #first {
   font-size: 1.5em;
+  color: #012227;
 }
 
 .result-card .rating #last {
   position: absolute;
   font-size: 0.8em;
   bottom: 0;
+  color: #012227;
 }
 
 .result-card .reviews {
   display: none;
+  color: #012227;
 }
 
 .result-card .comment-container {
@@ -233,18 +237,28 @@ body {
 
 .result-card #comment-button {
   background-color: #35b999;
-  padding: 0.3em 0.8em;
+  padding: 0.3em;
+  line-height: 0.5em;
+  font-size: 1.2em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-weight: bold;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 500;
   margin: 0.5em 1em;
   border: 1px solid #707070;
   border-radius: 6px;
+  padding-bottom: 0.4em;
 }
 
 .result-card #comment-button:hover {
-  background-color: #00ffbf;
+  background-color: #35b999;
+  cursor: pointer;
 }
 
 #empty-message {

@@ -41,6 +41,7 @@ body {
 
     input {
       padding: 1em;
+      // border: 1px solid #35b999;
     }
   }
 
@@ -126,10 +127,11 @@ body {
     padding-left: 1em;
     #card-name {
       font-weight: bold;
-      color: #966117;
+      color: #012227;
     }
     #card-county {
       font-size: 0.8em;
+      color: #134e56;
     }
   }
 
@@ -145,15 +147,18 @@ body {
     position: relative;
     #first {
       font-size: 1.5em;
+      color: #012227;
     }
     #last {
       position: absolute;
       font-size: 0.8em;
       bottom: 0;
+      color: #012227;
     }
   }
   .reviews {
     display: none;
+    color: #012227;
   }
 
   .comment-container {
@@ -192,15 +197,21 @@ body {
   }
   #comment-button {
     background-color: $buttons;
-    padding: 0.3em 0.8em;
+    padding: 0.3em;
+    line-height: 0.5em;
+    font-size: 1.2em;
     display: flex;
-    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
     margin: 0.5em 1em;
     border: 1px solid #707070;
     border-radius: 6px;
+    padding-bottom: 0.4em;
 
     &:hover {
-      background-color: #00ffbf;
+      background-color: #35b999;
+      cursor: pointer;
     }
   }
 }

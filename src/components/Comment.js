@@ -7,7 +7,7 @@ const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
 
     return (
         <>
-            <button id='comment-button' onClick={() => setShowComment(!showComment)}><InfoIcon fontSize="small" /></button>
+            <button id='comment-button' onClick={() => setShowComment(!showComment)}>&#8505;</button>
             {showComment ?
 
                 <div className='comment-container' key={extraData.reference}>
