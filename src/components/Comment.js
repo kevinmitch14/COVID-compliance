@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import InfoIcon from '@material-ui/icons/Info';
 // This is DEV
 const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
 
@@ -6,7 +7,7 @@ const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
 
     return (
         <>
-            <button id='comment-button' onClick={() => setShowComment(!showComment)}>i</button>
+            <button id='comment-button' onClick={() => setShowComment(!showComment)}><InfoIcon fontSize="small" /></button>
             {showComment ?
 
                 <div className='comment-container' key={extraData.reference}>
