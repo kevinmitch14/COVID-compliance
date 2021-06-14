@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-$buttons: #fcc374;
+$buttons: #35b999;
 
 * {
   padding: 0;
@@ -8,12 +8,12 @@ $buttons: #fcc374;
 }
 
 body {
-  background-color: #e5e5e5;
+  background-color: #ffffff;
 }
 
 // Input
 .Input {
-  background-color: #3d405b;
+  background-color: #04363d;
   padding: 2em 4em;
   color: #707070;
   border-bottom: 1px solid #636262;
@@ -22,12 +22,16 @@ body {
     padding: 0.5em;
     margin-right: 2em;
     width: 40%;
+    border-radius: 6px;
+    border: none;
   }
 
   button {
     background-color: $buttons;
-    padding: 0.5em;
-    border: 1px solid #707070;
+    border: none;
+    padding: 0 1.2em;
+    border-radius: 6px;
+    font-weight: 700;
   }
 
   .search {
@@ -37,6 +41,7 @@ body {
 
     input {
       padding: 1em;
+      // border: 1px solid #35b999;
     }
   }
 
@@ -102,13 +107,13 @@ body {
 }
 
 .result-card {
-  border: 1px solid #707070;
+  border: 1px solid #c4c4c4;
   padding: 1em;
   max-width: 720px;
   margin: 0 auto;
   text-align: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #e5e5e5;
   margin-bottom: 2em;
   border-radius: 0.3em;
   align-items: center;
@@ -122,10 +127,11 @@ body {
     padding-left: 1em;
     #card-name {
       font-weight: bold;
-      color: #966117;
+      color: #012227;
     }
     #card-county {
       font-size: 0.8em;
+      color: #134e56;
     }
   }
 
@@ -141,15 +147,18 @@ body {
     position: relative;
     #first {
       font-size: 1.5em;
+      color: #012227;
     }
     #last {
       position: absolute;
       font-size: 0.8em;
       bottom: 0;
+      color: #012227;
     }
   }
   .reviews {
     display: none;
+    color: #012227;
   }
 
   .comment-container {
@@ -188,9 +197,22 @@ body {
   }
   #comment-button {
     background-color: $buttons;
-    padding: 0.3em 0.3em;
+    padding: 0.3em;
+    line-height: 0.5em;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
     margin: 0.5em 1em;
     border: 1px solid #707070;
+    border-radius: 6px;
+    padding-bottom: 0.4em;
+
+    &:hover {
+      background-color: #35b999;
+      cursor: pointer;
+    }
   }
 }
 

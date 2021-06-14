@@ -1,12 +1,13 @@
 import { useState } from 'react'
-
+import InfoIcon from '@material-ui/icons/Info';
+// This is DEV
 const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
 
     const [showComment, setShowComment] = useState(false)
 
     return (
         <>
-            <button id='comment-button' onClick={() => setShowComment(!showComment)}>i</button>
+            <button id='comment-button' onClick={() => setShowComment(!showComment)}>&#8505;</button>
             {showComment ?
 
                 <div className='comment-container' key={extraData.reference}>

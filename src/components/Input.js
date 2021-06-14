@@ -114,7 +114,7 @@ const Input = ({ placeData }) => {
                             .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
                     }}
                     types={['establishment']}
-                    componentRestrictions={{ country: "irl" }}
+                    componentRestrictions={{ country: ["irl", "esp"] }}
                 />
 
                 <button onClick={() => {
