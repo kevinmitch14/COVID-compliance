@@ -24,6 +24,22 @@ body {
   border: none;
 }
 
+.Input input::-webkit-input-placeholder {
+  color: black;
+}
+
+.Input input:-ms-input-placeholder {
+  color: black;
+}
+
+.Input input::-ms-input-placeholder {
+  color: black;
+}
+
+.Input input::placeholder {
+  color: black;
+}
+
 .Input button {
   background-color: #35b999;
   border: none;
@@ -41,10 +57,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.Input .search input {
-  padding: 1em;
 }
 
 .Input .left {
@@ -71,7 +83,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 2em 4em 0em;
   color: #ffffff;
 }
 
@@ -87,22 +98,6 @@ body {
   border-bottom: 2px solid #e9b873;
 }
 
-@media (max-width: 1000px) {
-  .Input {
-    padding: 2em 1em;
-  }
-  .spotlight-info {
-    padding: 2em 2em 0em;
-  }
-  .spotlight-info .left {
-    padding-left: 0;
-    padding-right: 1em;
-  }
-  .spotlight-info .right {
-    padding-left: 1em;
-  }
-}
-
 .container {
   display: block;
   -webkit-box-pack: center;
@@ -113,7 +108,7 @@ body {
 
 .result-card {
   border: 1px solid #c4c4c4;
-  padding: 1em;
+  padding: 1em 0.5em;
   max-width: 720px;
   margin: 0 auto;
   text-align: center;
@@ -130,8 +125,6 @@ body {
   display: grid;
   -ms-grid-columns: 6fr 2fr 1fr;
       grid-template-columns: 6fr 2fr 1fr;
-  -webkit-column-gap: 1em;
-          column-gap: 1em;
   color: #000000;
 }
 
@@ -222,7 +215,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  letter-spacing: 0.05em;
+  letter-spacing: 0em;
 }
 
 .result-card .comment-container .comment-extra {
@@ -237,9 +230,7 @@ body {
 
 .result-card #comment-button {
   background-color: #35b999;
-  padding: 0.3em;
-  line-height: 0.5em;
-  font-size: 1.2em;
+  padding: 0.3em 0.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -253,7 +244,6 @@ body {
   margin: 0.5em 1em;
   border: 1px solid #707070;
   border-radius: 6px;
-  padding-bottom: 0.4em;
 }
 
 .result-card #comment-button:hover {
@@ -270,82 +260,139 @@ body {
   color: #9da8bd9e !important;
 }
 
-@media (min-width: 500px) {
-  .container {
-    padding: 3em 4em;
+@media (min-width: 200px) {
+  .Input {
+    padding: 1.5em 1em;
   }
-  .result-card {
-    margin-bottom: 3em;
-    padding: 2em 1em;
+  .Input .spotlight-info {
+    font-size: 0.8em;
+    padding: 2em 0 0;
   }
-  .result-card #card-name {
-    font-size: 1em;
+  .Input .spotlight-info .left {
+    padding: 0;
+    padding-right: 1em;
   }
-}
-
-@media (min-width: 700px) {
-  .result-card {
-    -ms-grid-columns: 6fr 2fr 2fr 1fr;
-        grid-template-columns: 6fr 2fr 2fr 1fr;
+  .Input .spotlight-info .right {
+    padding: 0;
+    padding-left: 1em;
   }
-  .result-card .reviews {
+  .Input .search {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .Input .search input {
+    width: 65%;
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 500px) {
   .container {
     padding: 3em 6em;
   }
-  .result-card {
-    padding: 2em 2em;
+  .Input {
+    padding: 2em 6em;
   }
-  .result-card #card-name {
-    font-size: 18px;
+  .Input .search input {
+    width: 75%;
+  }
+  .Input .spotlight-info {
+    font-size: 1em;
+  }
+  .Input .spotlight-info .left {
+    padding-left: 0em;
+    padding-right: 1em;
+  }
+  .Input .spotlight-info .right {
+    padding-left: 1em;
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 650px) {
+  .Input .spotlight-info {
+    font-size: 1em;
+  }
+  .Input .spotlight-info .left {
+    padding-right: 5em;
+  }
+  .Input .spotlight-info .right {
+    padding-left: 5em;
+  }
+}
+
+@media only screen and (min-width: 768px) {
   .container {
     padding: 3em 8em;
   }
   .result-card {
-    padding: 2.5em;
+    -ms-grid-columns: 4fr 2fr 2fr 1fr;
+        grid-template-columns: 4fr 2fr 2fr 1fr;
+    padding: 2em 1em;
+    font-size: 1.1em;
   }
-}
-
-@media (min-width: 1200px) {
-  .result-card {
-    padding: 2em 3em;
+  .result-card .reviews {
+    display: inline-block;
   }
-}
-
-@media (max-width: 600px) {
-  .comment-container {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    grid-column-end: 4;
-  }
-  .comment-container .comment-ratings {
-    display: none;
-  }
-  #comment-button {
-    background-color: #35b999;
-    padding: 0.1em 0.6em;
-    margin: 0.5em 1em;
-    border: 1px solid #707070;
-  }
-}
-
-@media (max-width: 500px) {
   .Input {
-    padding: 2em 1em 2em;
-    font-size: 14px;
+    padding: 2em 8em;
   }
-  .spotlight-info {
-    padding: 1em 0em 1em;
+  .Input .search {
+    margin: 0;
+  }
+  .Input .search input {
+    width: 75%;
+    padding: 0.5em;
+    height: 2em;
+  }
+  .Input .spotlight-info {
+    font-size: 1em;
+  }
+  .Input .spotlight-info .left {
+    padding-right: 4em;
+  }
+  .Input .spotlight-info .right {
+    padding-left: 4em;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .Input {
+    padding: 2em 10em;
+  }
+  .Input .spotlight-info .left {
+    padding-right: 6em;
+  }
+  .Input .spotlight-info .right {
+    padding-left: 6em;
+  }
+  .container {
+    padding: 3em 10em;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .result-card {
+    padding: 2em;
+  }
+  .Input {
+    padding: 3em 20em;
+  }
+  .Input .search input {
+    width: 80%;
+    height: 2.5em;
+    padding-left: 1em;
+  }
+  .Input .spotlight-info {
+    font-size: 1em;
+  }
+  .Input .spotlight-info .left {
+    padding-right: 10em;
+  }
+  .Input .spotlight-info .right {
+    padding-left: 4em;
   }
 }
 /*# sourceMappingURL=App.css.map */
