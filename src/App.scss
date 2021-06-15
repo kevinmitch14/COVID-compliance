@@ -318,6 +318,11 @@ body {
 @media only screen and (min-width: 900px) {
   .Input {
     padding: 2em 10em;
+    .search {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    // padding: 2em 10em;
     .spotlight-info {
       .left {
         padding-right: 6em;
@@ -333,12 +338,15 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
-  .result-card {
-    padding: 2em;
+  // .result-card {
+  //   padding: 2em;
+  // }
+  .container {
+    padding: 3em 10em;
   }
 
   .Input {
-    padding: 3em 20em;
+    padding: 2em 10em;
     .search {
       input {
         width: 80%;
