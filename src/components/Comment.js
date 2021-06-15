@@ -12,9 +12,9 @@ const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
 
                 <div className='comment-container' key={extraData.reference}>
                     <div className="comment-ratings" key={extraData.reference}>
-                        <span>Cleanliness: <span style={rankingStyles}>{cleanRating}</span></span>
-                        <span>Adherance: <span style={rankingStyles}>{adheranceRating}</span></span>
-                        <span>Staff: <span style={rankingStyles}>{staffRating}</span></span>
+                        <span>Cleanliness: <span style={{ color: cleanRating === 5 || cleanRating === 4 ? 'green' : cleanRating === 3 ? 'orange' : 'red' }}>{cleanRating}</span></span>
+                        <span>Adherance: <span style={{ color: adheranceRating === 5 || adheranceRating === 4 ? 'green' : adheranceRating === 3 ? 'orange' : 'red' }}>{adheranceRating}</span></span>
+                        <span>Staff: <span style={{ color: staffRating === 5 || staffRating === 4 ? 'green' : staffRating === 3 ? 'orange' : 'red' }}>{staffRating}</span></span>
                     </div>
 
                     <div className="comment-extra" key={extraData.name}>
