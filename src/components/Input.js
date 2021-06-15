@@ -9,7 +9,7 @@ import firebase from 'firebase/app'
 const Input = ({ placeData }) => {
 
     const [place, setPlace] = useState('');
-    const [county, setCounty] = useState('');
+    // const [county, setCounty] = useState('');
     const [rating, setRating] = useState('')
     const [rank, setRank] = useState('')
 
@@ -84,7 +84,6 @@ const Input = ({ placeData }) => {
                 viewComment: false,
                 extraData: place,
                 count: 1,
-                county: county,
                 average: ((parseInt(cleanRating) + parseInt(staffRating) + parseInt(adheranceRating)) / 3)
             })
         }
@@ -106,11 +105,11 @@ const Input = ({ placeData }) => {
                             .then(response => response.json())
                             .then(contents => contents.result)
                             .then((result) => setPlace(result))
-                            .then(place.address_components.forEach((item2) => {
-                                if (item2.types.includes("administrative_area_level_1")) {
-                                    setCounty(item2.long_name.split(" ")[1])
-                                }
-                            }))
+                            // .then(place.address_components.forEach((item2) => {
+                            //     if (item2.types.includes("administrative_area_level_1")) {
+                            //         setCounty(item2.long_name.split(" ")[1])
+                            //     }
+                            // }))
                             .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
                     }}
                     types={['establishment']}
