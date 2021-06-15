@@ -84,7 +84,6 @@ const Input = ({ placeData }) => {
                 viewComment: false,
                 extraData: place,
                 count: 1,
-                // county: county,
                 average: ((parseInt(cleanRating) + parseInt(staffRating) + parseInt(adheranceRating)) / 3)
             })
         }
