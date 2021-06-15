@@ -3,6 +3,7 @@ import { useState } from 'react'
 const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
 
     const [showComment, setShowComment] = useState(false)
+    const rankingStyles = { color: cleanRating === 5 || cleanRating === 4 ? 'green' : cleanRating === 3 ? 'orange' : 'red' }
 
     return (
         <>
@@ -11,9 +12,9 @@ const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
 
                 <div className='comment-container' key={extraData.reference}>
                     <div className="comment-ratings" key={extraData.reference}>
-                        <span>Cleanliness: {cleanRating}</span>
-                        <span>Adherance:{adheranceRating}</span>
-                        <span>Staff:{staffRating}</span>
+                        <span>Cleanliness: <span style={rankingStyles}>{cleanRating}</span></span>
+                        <span>Adherance: <span style={rankingStyles}>{adheranceRating}</span></span>
+                        <span>Staff: <span style={rankingStyles}>{staffRating}</span></span>
                     </div>
 
                     <div className="comment-extra" key={extraData.name}>
