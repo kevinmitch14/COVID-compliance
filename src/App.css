@@ -5,6 +5,23 @@
   font-family: "Poppins", "arial";
 }
 
+.place-spinner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2em;
+}
+
+.MuiChip-deleteIcon {
+  color: white !important;
+}
+
 body {
   background-color: #ffffff;
 }
@@ -26,18 +43,22 @@ body {
 
 .Input input::-webkit-input-placeholder {
   color: black;
+  font-size: 0.8em;
 }
 
 .Input input:-ms-input-placeholder {
   color: black;
+  font-size: 0.8em;
 }
 
 .Input input::-ms-input-placeholder {
   color: black;
+  font-size: 0.8em;
 }
 
 .Input input::placeholder {
   color: black;
+  font-size: 0.8em;
 }
 
 .Input button {
@@ -299,6 +320,18 @@ body {
   .Input .search input {
     width: 75%;
   }
+  .Input input::-webkit-input-placeholder {
+    font-size: 1em;
+  }
+  .Input input:-ms-input-placeholder {
+    font-size: 1em;
+  }
+  .Input input::-ms-input-placeholder {
+    font-size: 1em;
+  }
+  .Input input::placeholder {
+    font-size: 1em;
+  }
   .Input .spotlight-info {
     font-size: 1em;
   }
@@ -316,10 +349,10 @@ body {
     font-size: 1em;
   }
   .Input .spotlight-info .left {
-    padding-right: 5em;
+    padding-right: 4em;
   }
   .Input .spotlight-info .right {
-    padding-left: 5em;
+    padding-left: 3em;
   }
 }
 
@@ -393,7 +426,7 @@ body {
     font-size: 1em;
   }
   .Input .spotlight-info .left {
-    padding-right: 10em;
+    padding-right: 6em;
   }
   .Input .spotlight-info .right {
     padding-left: 4em;

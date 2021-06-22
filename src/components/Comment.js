@@ -3,7 +3,6 @@ import { useState } from 'react'
 const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
 
     const [showComment, setShowComment] = useState(false)
-    const rankingStyles = { color: cleanRating === 5 || cleanRating === 4 ? 'green' : cleanRating === 3 ? 'orange' : 'red' }
 
     return (
         <>
@@ -12,9 +11,9 @@ const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
 
                 <div className='comment-container' key={extraData.reference}>
                     <div className="comment-ratings" key={extraData.reference}>
-                        <span>Cleanliness: <span style={{ color: cleanRating === 5 || cleanRating === 4 ? 'green' : cleanRating === 3 ? 'orange' : 'red' }}>{cleanRating}</span></span>
-                        <span>Adherance: <span style={{ color: adheranceRating === 5 || adheranceRating === 4 ? 'green' : adheranceRating === 3 ? 'orange' : 'red' }}>{adheranceRating}</span></span>
-                        <span>Staff: <span style={{ color: staffRating === 5 || staffRating === 4 ? 'green' : staffRating === 3 ? 'orange' : 'red' }}>{staffRating}</span></span>
+                        <span key='clean'>Cleanliness: <span key='clean' style={{ color: cleanRating === 5 || cleanRating === 4 ? 'green' : cleanRating === 3 ? 'orange' : 'red' }}>{cleanRating}</span></span>
+                        <span key='adherance'>Adherance: <span key='adherance' style={{ color: adheranceRating === 5 || adheranceRating === 4 ? 'green' : adheranceRating === 3 ? 'orange' : 'red' }}>{adheranceRating}</span></span>
+                        <span key='staff'>Staff: <span key='staff' style={{ color: staffRating === 5 || staffRating === 4 ? 'green' : staffRating === 3 ? 'orange' : 'red' }}>{staffRating}</span></span>
                     </div>
 
                     <div className="comment-extra" key={extraData.name}>
@@ -23,7 +22,7 @@ const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
                             if ((today.getDay() === index) && (item.close.day === index)) {
                                 return (
                                     item.close.day === index && (today.getHours() >= item.open.time / 100 && today.getHours() <= item.close.time / 100)
-                                        ? <span key={extraData.name} style={{ color: 'green' }}>Open</span> : <span style={{ color: 'red' }}>Closed</span>
+                                        ? <span key={extraData.name} style={{ color: 'green' }}>Open</span> : <span key={extraData.name} style={{ color: 'red' }}>Closed</span>
                                 )
                             } else if (today.getDay() === index && item.close.day !== index) {
                                 let substring = item.close.time.slice(0, 1)
@@ -31,13 +30,13 @@ const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
                                 nextDay.setDate(today.getDate() + 1)
                                 nextDay.setHours(substring)
                                 return (
-                                    today.getHours() >= item.open.time && today < nextDay ? <span key={extraData.name + "1"} style={{ color: 'green' }}>Open</span> : <span style={{ color: 'red' }}>Closed</span>
+                                    today.getHours() >= item.open.time && today < nextDay ? <span key={extraData.name + "1"} style={{ color: 'green' }}>Open</span> : <span key={extraData.name} style={{ color: 'red' }}>Closed</span>
                                 )
                             } return null;
                         })}
 
-                        <a href={"tel:" + extraData.formatted_phone_number}><span>{extraData.formatted_phone_number}</span></a>
-                        {extraData.website ? <a href={extraData.website} target="_blank" rel="noopener noreferrer">{extraData.website.length < 30 ? <span>{extraData.website}</span> : <span>Website</span>}</a> : null}
+                        <a href={"tel:" + extraData.formatted_phone_number}><span key={extraData.name}>{extraData.formatted_phone_number}</span></a>
+                        {extraData.website ? <a href={extraData.website} target="_blank" rel="noopener noreferrer">{extraData.website.length < 30 ? <span key={extraData.name}>{extraData.website}</span> : <span key={extraData.name}>Website</span>}</a> : null}
                     </div>
                 </div>
 

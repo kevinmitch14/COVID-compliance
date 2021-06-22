@@ -3,6 +3,7 @@ import Results from './components/Results';
 import './App.css';
 import db from './firebase';
 import { useEffect, useState } from 'react';
+import ChipWrapper from './components/ChipWrapper';
 
 const App = () => {
   const [placeData, setData] = useState([]);
@@ -28,12 +29,44 @@ const App = () => {
 
 
 
+  const [actives, setActives] = useState([
+    { id: 0, category: "Restaurants", active: false, google_name: 'rest' },
+    { id: 1, category: "Hotel", active: false, google_name: 'lodging' },
+    { id: 2, category: "Landmarks", active: false, google_name: 'landmark' },
+    { id: 3, category: "Most Reviewed", active: false, google_name: 'reviewed' },
+    { id: 4, category: "Bars", active: false, google_name: 'bar' },
+    { id: 5, category: "Retail", active: false, google_name: 'retail' }
+  ])
+
+  const chipActiveHandler = (id) => {
+    let arr = [...actives]
+    arr[id]['active'] = true
+    setActives(arr)
+  }
+
+
+  const chipDeleteHandler = (id) => {
+    let arr = [...actives]
+    arr[id]['active'] = false
+    setActives(arr)
+  }
 
 
   return (
     <div className="App">
       <Input placeData={placeData} loading={loading} />
-      <Results placeData={placeData} loading={loading} />
+
+
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '1.5em 4em', paddingBottom: '0em', gridTemplateColumns: '1fr 1fr 1fr', columnGap: '2em', rowGap: '1em' }}>
+        <ChipWrapper label="Restaurants" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={0} />
+        <ChipWrapper label="Hotels" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={1} />
+        <ChipWrapper label="Landmarks" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={2} />
+        <ChipWrapper label="Most Reviewed" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={3} />
+        <ChipWrapper label="Bars" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={4} />
+        <ChipWrapper label="Retail" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={5} />
+      </div>
+
+      <Results placeData={placeData} loading={loading} actives={actives} />
     </div>
   );
 }

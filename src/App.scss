@@ -7,6 +7,16 @@ $buttons: #35b999;
   font-family: "Poppins", "arial";
 }
 
+.place-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+}
+
+.MuiChip-deleteIcon {
+  color: white !important;
+}
 body {
   background-color: #ffffff;
 }
@@ -28,6 +38,7 @@ body {
 
   input::placeholder {
     color: black;
+    font-size: 0.8em;
   }
 
   button {
@@ -42,11 +53,6 @@ body {
     display: flex;
     align-content: center;
     justify-content: center;
-
-    input {
-      // padding: 1em;
-      // border: 1px solid #35b999;
-    }
   }
 
   .left {
@@ -249,6 +255,9 @@ body {
         width: 75%;
       }
     }
+    input::placeholder {
+      font-size: 1em;
+    }
 
     .spotlight-info {
       font-size: 1em;
@@ -269,10 +278,10 @@ body {
     .spotlight-info {
       font-size: 1em;
       .left {
-        padding-right: 5em;
+        padding-right: 4em;
       }
       .right {
-        padding-left: 5em;
+        padding-left: 3em;
       }
     }
   }
@@ -357,7 +366,7 @@ body {
     .spotlight-info {
       font-size: 1em;
       .left {
-        padding-right: 10em;
+        padding-right: 6em;
       }
 
       .right {
