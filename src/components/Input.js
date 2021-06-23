@@ -56,24 +56,26 @@ const Input = ({ placeData }) => {
     }
 
     async function onUpload() {
-        setSearchActivated(false)
-        const reviewsRef = db.collection('reviews')
-        const snap = await reviewsRef.where('place', '==', place.name.toUpperCase()).get();
-        if (!snap.empty) {
-            // Logic to add to document
-            snap.forEach(doc => {
-                console.log(doc.id)
-                db.collection('reviews').doc(doc.id).update({
-                    count: parseInt(doc.data().count + 1),
-                    cleanRating: (parseInt(doc.data().cleanRating) + parseInt(cleanRating)),
-                    adheranceRating: parseInt(doc.data().adheranceRating) + parseInt(adheranceRating),
-                    staffRating: parseInt(doc.data().staffRating) + parseInt(staffRating),
-                    accumRating: parseInt(doc.data().accumRating) + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating))),
-                    userComment: doc.data().userComment.concat(userComment),
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        if (place) {
+            setSearchActivated(false)
+            const reviewsRef = db.collection('reviews')
+            const snap = await reviewsRef.where('place', '==', place.name.toUpperCase()).get();
+            if (!snap.empty) {
+                // Logic to add to document
+                snap.forEach(doc => {
+                    console.log(doc.id)
+                    db.collection('reviews').doc(doc.id).update({
+                        count: parseInt(doc.data().count + 1),
+                        cleanRating: (parseInt(doc.data().cleanRating) + parseInt(cleanRating)),
+                        adheranceRating: parseInt(doc.data().adheranceRating) + parseInt(adheranceRating),
+                        staffRating: parseInt(doc.data().staffRating) + parseInt(staffRating),
+                        accumRating: parseInt(doc.data().accumRating) + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating))),
+                        userComment: doc.data().userComment.concat(userComment),
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    })
                 })
-            })
-            return;
+                return;
+            }
         }
 
 
