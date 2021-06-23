@@ -3,6 +3,7 @@ import Results from './components/Results';
 import './App.css';
 import db from './firebase';
 import { useEffect, useState } from 'react';
+import ChipHeader from './components/ChipHeader';
 
 const App = () => {
   const [placeData, setData] = useState([]);
@@ -29,10 +30,10 @@ const App = () => {
 
 
 
-
   return (
     <div className="App">
       <Input placeData={placeData} loading={loading} />
+      <ChipHeader />
       <Results placeData={placeData} loading={loading} />
     </div>
   );

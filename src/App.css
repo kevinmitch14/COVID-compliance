@@ -5,6 +5,27 @@
   font-family: "Poppins", "arial";
 }
 
+.ChipHeader {
+  display: none;
+}
+
+.place-spinner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2em;
+}
+
+.MuiChip-deleteIcon {
+  color: white !important;
+}
+
 body {
   background-color: #ffffff;
 }
@@ -13,7 +34,7 @@ body {
   background-color: #04363d;
   padding: 2em 4em;
   color: #707070;
-  border-bottom: 1px solid #636262;
+  border-bottom: 1px solid #134e56;
 }
 
 .Input input {
@@ -26,18 +47,22 @@ body {
 
 .Input input::-webkit-input-placeholder {
   color: black;
+  font-size: 0.8em;
 }
 
 .Input input:-ms-input-placeholder {
   color: black;
+  font-size: 0.8em;
 }
 
 .Input input::-ms-input-placeholder {
   color: black;
+  font-size: 0.8em;
 }
 
 .Input input::placeholder {
   color: black;
+  font-size: 0.8em;
 }
 
 .Input button {
@@ -299,6 +324,18 @@ body {
   .Input .search input {
     width: 75%;
   }
+  .Input input::-webkit-input-placeholder {
+    font-size: 1em;
+  }
+  .Input input:-ms-input-placeholder {
+    font-size: 1em;
+  }
+  .Input input::-ms-input-placeholder {
+    font-size: 1em;
+  }
+  .Input input::placeholder {
+    font-size: 1em;
+  }
   .Input .spotlight-info {
     font-size: 1em;
   }
@@ -316,10 +353,10 @@ body {
     font-size: 1em;
   }
   .Input .spotlight-info .left {
-    padding-right: 5em;
+    padding-right: 4em;
   }
   .Input .spotlight-info .right {
-    padding-left: 5em;
+    padding-left: 3em;
   }
 }
 
@@ -362,6 +399,10 @@ body {
   .Input {
     padding: 2em 10em;
   }
+  .Input .search {
+    max-width: 720px;
+    margin: 0 auto;
+  }
   .Input .spotlight-info .left {
     padding-right: 6em;
   }
@@ -371,14 +412,28 @@ body {
   .container {
     padding: 3em 10em;
   }
+  .ChipHeader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 1.5em 4em;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    -webkit-column-gap: 1em;
+            column-gap: 1em;
+    background-color: #04363d;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
-  .result-card {
-    padding: 2em;
+  .container {
+    padding: 3em 10em;
   }
   .Input {
-    padding: 3em 20em;
+    padding: 2em 10em;
   }
   .Input .search input {
     width: 80%;
@@ -389,7 +444,7 @@ body {
     font-size: 1em;
   }
   .Input .spotlight-info .left {
-    padding-right: 10em;
+    padding-right: 6em;
   }
   .Input .spotlight-info .right {
     padding-left: 4em;

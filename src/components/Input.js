@@ -4,14 +4,21 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Autocomplete from 'react-google-autocomplete';
 import db from '../firebase';
 import firebase from 'firebase/app'
+import { CircularProgress } from '@material-ui/core';
+// import Chip from '@material-ui/core/Chip';
+// import ChipWrapper from './ChipWrapper';
+
+
 //Dev
 
 const Input = ({ placeData }) => {
 
     const [place, setPlace] = useState('');
-    // const [county, setCounty] = useState('');
+    const [county, setCounty] = useState('');
     const [rating, setRating] = useState('')
     const [rank, setRank] = useState('')
+    const [loadingPlace, setLoadingPlace] = useState(false)
+    const [searchActivated, setSearchActivated] = useState(false)
 
 
     useEffect(() => {
@@ -49,24 +56,26 @@ const Input = ({ placeData }) => {
     }
 
     async function onUpload() {
-
-        const reviewsRef = db.collection('reviews')
-        const snap = await reviewsRef.where('place', '==', place.name.toUpperCase()).get();
-        if (!snap.empty) {
-            // Logic to add to document
-            snap.forEach(doc => {
-                console.log(doc.id)
-                db.collection('reviews').doc(doc.id).update({
-                    count: parseInt(doc.data().count + 1),
-                    cleanRating: (parseInt(doc.data().cleanRating) + parseInt(cleanRating)),
-                    adheranceRating: parseInt(doc.data().adheranceRating) + parseInt(adheranceRating),
-                    staffRating: parseInt(doc.data().staffRating) + parseInt(staffRating),
-                    accumRating: parseInt(doc.data().accumRating) + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating))),
-                    userComment: doc.data().userComment.concat(userComment),
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        if (place) {
+            setSearchActivated(false)
+            const reviewsRef = db.collection('reviews')
+            const snap = await reviewsRef.where('place', '==', place.name.toUpperCase()).get();
+            if (!snap.empty) {
+                // Logic to add to document
+                snap.forEach(doc => {
+                    console.log(doc.id)
+                    db.collection('reviews').doc(doc.id).update({
+                        count: parseInt(doc.data().count + 1),
+                        cleanRating: (parseInt(doc.data().cleanRating) + parseInt(cleanRating)),
+                        adheranceRating: parseInt(doc.data().adheranceRating) + parseInt(adheranceRating),
+                        staffRating: parseInt(doc.data().staffRating) + parseInt(staffRating),
+                        accumRating: parseInt(doc.data().accumRating) + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating))),
+                        userComment: doc.data().userComment.concat(userComment),
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    })
                 })
-            })
-            return;
+                return;
+            }
         }
 
 
@@ -84,6 +93,7 @@ const Input = ({ placeData }) => {
                 viewComment: false,
                 extraData: place,
                 count: 1,
+                county: county,
                 average: ((parseInt(cleanRating) + parseInt(staffRating) + parseInt(adheranceRating)) / 3)
             })
         }
@@ -101,15 +111,23 @@ const Input = ({ placeData }) => {
                         // const proxyurl = "https://cors-anywhere.herokuapp.com/";
                         const proxyurl = "https://young-basin-20621.herokuapp.com/";
                         const url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + id + "&key=AIzaSyBhcUiOcSbio-KNInHy-n3sUoCFtjMyL1c"; // site that doesn’t send Access-Control-*
+                        setLoadingPlace(true)
+                        setSearchActivated(true)
                         fetch(proxyurl + url)
                             .then(response => response.json())
                             .then(contents => contents.result)
-                            .then((result) => setPlace(result))
-                            // .then(place.address_components.forEach((item2) => {
-                            //     if (item2.types.includes("administrative_area_level_1")) {
-                            //         setCounty(item2.long_name.split(" ")[1])
-                            //     }
-                            // }))
+                            .then((result) => { setPlace(result); setLoadingPlace(false) })
+                            .then(place.address_components.forEach((item2) => {
+                                if (item2.types.includes("administrative_area_level_1")) {
+                                    console.log(item2.long_name)
+                                    setCounty(item2.long_name)
+                                } else {
+                                    if (item2.types.includes("administrative_area_level_2")) {
+                                        console.log(item2.long_name)
+                                        setCounty(item2.long_name)
+                                    }
+                                }
+                            }))
                             .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
                     }}
                     types={['establishment']}
@@ -122,39 +140,82 @@ const Input = ({ placeData }) => {
                 }}>Upload</button>
             </div>
 
-            {place &&
-                <div className="spotlight-info">
 
-                    <div className="left">
-                        {console.log(100)}
-                        <h4 className="place-name">{place.name}</h4>
-                        {rating ? <p>Rating:  <span className="place-rating">
-                            {/* {(Math.round(((rating)) * 10) / 10)} */}
-                            {rating}
-                        </span></p> : <p>Rating: <span className="place-rating">N/A</span></p>}
-                        {typeof rank === 'number' ? <p>Ranking:  <span className="place-ranking">#{rank + 1}</span></p> : <p>Ranking:  <span className="place-ranking">N/A</span></p>}
-                    </div>
+            {/* <div style={{ display: 'flex', justifyContent: 'center', padding: '1.5em 4em', paddingBottom: '0em', gridTemplateColumns: '1fr 1fr 1fr', columnGap: '2em', rowGap: '1em' }}>
+                <ChipWrapper label="Restaurants" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={0} />
+                <ChipWrapper label="Hotels" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={1} />
+                <ChipWrapper label="Landmarks" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={2} />
+                <ChipWrapper label="Most Reviewed" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={3} />
+                <ChipWrapper label="Bars" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={4} />
+                <ChipWrapper label="Retail" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={5} />
+            </div> */}
 
-                    <div className="right">
-                        <p>Cleanliness: <span><Rating
-                            name="clean"
-                            value={Number(cleanRating)}
-                            onChange={(event) => setCleanRating(event.target.value)}
-                            icon={<FiberManualRecordIcon />} /></span></p>
+            {loadingPlace && <div className="place-spinner"><CircularProgress /></div>}
+            {!loadingPlace && searchActivated && <div className="spotlight-info">
+                <div className="left">
+                    <h4 className="place-name">{place.name}</h4>
+                    {rating ? <p>Rating:  <span className="place-rating">
+                        {rating}
+                    </span></p> : <p>Rating: <span className="place-rating">N/A</span></p>}
+                    {typeof rank === 'number' ? <p>Ranking:  <span className="place-ranking">#{rank + 1}</span></p> : <p>Ranking:  <span className="place-ranking">N/A</span></p>}
+                </div>
 
-                        <p>Adherance: <span><Rating
-                            name="adherance"
-                            value={Number(adheranceRating)}
-                            onChange={(event) => setAdheranceRating(event.target.value)}
-                            icon={<FiberManualRecordIcon />} /></span></p>
+                <div className="right">
+                    <p>Cleanliness: <span><Rating
+                        name="clean"
+                        value={Number(cleanRating)}
+                        onChange={(event) => setCleanRating(event.target.value)}
+                        icon={<FiberManualRecordIcon />} /></span></p>
 
-                        <p>Staff: <span><Rating
-                            name="staff"
-                            value={Number(staffRating)}
-                            onChange={(event) => setStaffRating(event.target.value)}
-                            icon={<FiberManualRecordIcon />} /></span></p>
-                    </div>
-                </div>}
+                    <p>Adherance: <span><Rating
+                        name="adherance"
+                        value={Number(adheranceRating)}
+                        onChange={(event) => setAdheranceRating(event.target.value)}
+                        icon={<FiberManualRecordIcon />} /></span></p>
+
+                    <p>Staff: <span><Rating
+                        name="staff"
+                        value={Number(staffRating)}
+                        onChange={(event) => setStaffRating(event.target.value)}
+                        icon={<FiberManualRecordIcon />} /></span></p>
+                </div>
+            </div>}
+
+
+
+
+            {/* {place &&
+                    <div className="spotlight-info">
+
+                        <div className="left">
+                            {console.log(100)}
+                            <h4 className="place-name">{place.name}</h4>
+                            {rating ? <p>Rating:  <span className="place-rating">
+                                {rating}
+                            </span></p> : <p>Rating: <span className="place-rating">N/A</span></p>}
+                            {typeof rank === 'number' ? <p>Ranking:  <span className="place-ranking">#{rank + 1}</span></p> : <p>Ranking:  <span className="place-ranking">N/A</span></p>}
+                        </div>
+
+                        <div className="right">
+                            <p>Cleanliness: <span><Rating
+                                name="clean"
+                                value={Number(cleanRating)}
+                                onChange={(event) => setCleanRating(event.target.value)}
+                                icon={<FiberManualRecordIcon />} /></span></p>
+
+                            <p>Adherance: <span><Rating
+                                name="adherance"
+                                value={Number(adheranceRating)}
+                                onChange={(event) => setAdheranceRating(event.target.value)}
+                                icon={<FiberManualRecordIcon />} /></span></p>
+
+                            <p>Staff: <span><Rating
+                                name="staff"
+                                value={Number(staffRating)}
+                                onChange={(event) => setStaffRating(event.target.value)}
+                                icon={<FiberManualRecordIcon />} /></span></p>
+                        </div>
+                    </div>} */}
         </div>
     )
 }
