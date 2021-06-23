@@ -5,6 +5,10 @@
   font-family: "Poppins", "arial";
 }
 
+.ChipHeader {
+  display: none;
+}
+
 .place-spinner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -30,7 +34,7 @@ body {
   background-color: #04363d;
   padding: 2em 4em;
   color: #707070;
-  border-bottom: 1px solid #636262;
+  border-bottom: 1px solid #134e56;
 }
 
 .Input input {
@@ -407,6 +411,20 @@ body {
   }
   .container {
     padding: 3em 10em;
+  }
+  .ChipHeader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 1.5em 4em;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    -webkit-column-gap: 1em;
+            column-gap: 1em;
+    background-color: #04363d;
   }
 }
 

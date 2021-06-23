@@ -7,6 +7,10 @@ $buttons: #35b999;
   font-family: "Poppins", "arial";
 }
 
+.ChipHeader {
+  display: none;
+}
+
 .place-spinner {
   display: flex;
   justify-content: center;
@@ -26,7 +30,7 @@ body {
   background-color: #04363d;
   padding: 2em 4em;
   color: #707070;
-  border-bottom: 1px solid #636262;
+  border-bottom: 1px solid #134e56;
 
   input {
     padding: 0.5em;
@@ -343,6 +347,15 @@ body {
   }
   .container {
     padding: 3em 10em;
+  }
+
+  .ChipHeader {
+    display: flex;
+    justify-content: center;
+    padding: 1.5em 4em;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 1em;
+    background-color: #04363d;
   }
 }
 
