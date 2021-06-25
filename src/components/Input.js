@@ -72,6 +72,9 @@ const Input = ({ placeData }) => {
                         accumRating: parseInt(doc.data().accumRating) + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating))),
                         userComment: doc.data().userComment.concat(userComment),
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        average: (parseInt(doc.data().average) / (parseInt(doc.data().count) + 1))
+
+                            + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating)) / 3) / (parseInt(doc.data().count) + 1)
                     })
                 })
                 return;
@@ -141,14 +144,6 @@ const Input = ({ placeData }) => {
             </div>
 
 
-            {/* <div style={{ display: 'flex', justifyContent: 'center', padding: '1.5em 4em', paddingBottom: '0em', gridTemplateColumns: '1fr 1fr 1fr', columnGap: '2em', rowGap: '1em' }}>
-                <ChipWrapper label="Restaurants" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={0} />
-                <ChipWrapper label="Hotels" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={1} />
-                <ChipWrapper label="Landmarks" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={2} />
-                <ChipWrapper label="Most Reviewed" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={3} />
-                <ChipWrapper label="Bars" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={4} />
-                <ChipWrapper label="Retail" chipActiveHandler={chipActiveHandler} chipDeleteHandler={chipDeleteHandler} id={5} />
-            </div> */}
 
             {loadingPlace && <div className="place-spinner"><CircularProgress /></div>}
             {!loadingPlace && searchActivated && <div className="spotlight-info">
