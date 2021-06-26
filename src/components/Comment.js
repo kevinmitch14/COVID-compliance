@@ -36,7 +36,7 @@ const Comment = ({ cleanRating, staffRating, adheranceRating, extraData }) => {
                         })}
 
                         <a href={"tel:" + extraData.formatted_phone_number}><span key={extraData.name}>{extraData.formatted_phone_number}</span></a>
-                        {extraData.website ? <a href={extraData.website} target="_blank" rel="noopener noreferrer">{extraData.website.length < 30 ? <span key={extraData.name}>{extraData.website}</span> : <span key={extraData.name}>Website</span>}</a> : null}
+                        {extraData.website ? <a href={extraData.website} target="_blank" rel="noopener noreferrer"><span key={extraData.name}>Website</span></a> : null}
                     </div>
                 </div>
 
