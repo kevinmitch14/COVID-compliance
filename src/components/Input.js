@@ -26,7 +26,7 @@ const Input = ({ placeData }) => {
         setRating('')
         placeData.forEach((item, index) => {
             if (place && place.name.toUpperCase() === item.place) {
-                setRating((item.average.toFixed(1)))
+                setRating(((item.accumRating / 3) / item.count).toFixed(1))
                 setRank(parseInt(index))
             }
         })
@@ -65,16 +65,16 @@ const Input = ({ placeData }) => {
                 snap.forEach(doc => {
                     console.log(doc.id)
                     db.collection('reviews').doc(doc.id).update({
-                        count: parseInt(doc.data().count + 1),
                         cleanRating: (parseInt(doc.data().cleanRating) + parseInt(cleanRating)),
                         adheranceRating: parseInt(doc.data().adheranceRating) + parseInt(adheranceRating),
                         staffRating: parseInt(doc.data().staffRating) + parseInt(staffRating),
+                        average: ((((doc.data().accumRating) / 3) + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating)) / 3)) / parseInt(doc.data().count + 1)),
                         accumRating: parseInt(doc.data().accumRating) + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating))),
                         userComment: doc.data().userComment.concat(userComment),
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                        average: (parseInt(doc.data().average) / (parseInt(doc.data().count) + 1))
-
-                            + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating)) / 3) / (parseInt(doc.data().count) + 1)
+                        count: parseInt(doc.data().count + 1)
+                        // (parseInt(doc.data().average) / (parseInt(doc.data().count) + 1))
+                        // + ((parseInt(cleanRating) + parseInt(adheranceRating) + parseInt(staffRating)) / 3) / (parseInt(doc.data().count) + 1)
                     })
                 })
                 return;
@@ -150,6 +150,7 @@ const Input = ({ placeData }) => {
                 <div className="left">
                     <h4 className="place-name">{place.name}</h4>
                     {rating ? <p>Rating:  <span className="place-rating">
+
                         {rating}
                     </span></p> : <p>Rating: <span className="place-rating">N/A</span></p>}
                     {typeof rank === 'number' ? <p>Ranking:  <span className="place-ranking">#{rank + 1}</span></p> : <p>Ranking:  <span className="place-ranking">N/A</span></p>}
