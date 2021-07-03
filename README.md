@@ -7,6 +7,8 @@ Users can select a place using the Google Autosuggestions API and rate this plac
 - Cleanliness
 - Aherance
 
+Data is stored in a Firestore DB and hosted via Firebase.
+
 ## Available Scripts
 
 In the project directory, you can run:
