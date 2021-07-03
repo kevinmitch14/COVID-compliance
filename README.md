@@ -1,6 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Covid Compliance
+Application created to rate establishments compliance with Covid-19 regulations.
+Users can select a place using the Google Autosuggestions API and rate this place based on:
+- Staff
+- Cleanliness
+- Aherance
 
 ## Available Scripts
 
